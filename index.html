@@ -178,12 +178,12 @@
             box-shadow: 0 0 10px #ff69b4;
         }
 
-        /* Section 2: Quả cầu ảnh 3D tròn tròn xoay (28 chỗ) */
+        /* Section 2: Khối hình Trái Tim 3D xoay (28 chỗ) */
         .globe-container {
             width: 400px;
             height: 400px;
             position: relative;
-            perspective: 1000px;
+            perspective: 1200px;
             margin-bottom: 20px;
         }
 
@@ -192,20 +192,20 @@
             height: 100%;
             position: absolute;
             transform-style: preserve-3d;
-            animation: rotateGlobe 25s infinite linear;
+            animation: rotateHeart 25s infinite linear;
         }
 
-        @keyframes rotateGlobe {
+        @keyframes rotateHeart {
             from { transform: rotateX(0deg) rotateY(0deg); }
             to { transform: rotateX(360deg) rotateY(360deg); }
         }
 
         .globe-item {
             position: absolute;
-            width: 60px;
-            height: 60px;
-            left: 170px;
-            top: 170px;
+            width: 55px;
+            height: 55px;
+            left: 172px;
+            top: 172px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -214,7 +214,7 @@
             border: 2px solid #ffb6c1;
             box-shadow: 0 0 10px rgba(255,105,180,0.6);
             cursor: pointer;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: bold;
             color: #fff;
             text-align: center;
@@ -392,11 +392,11 @@
                     </table>
                 </div>
             </div>
-            <!-- Nút Tiếp tục sang Quả Cầu Ảnh -->
+            <!-- Nút Tiếp tục sang Khối Trái Tim Ảnh -->
             <button class="next-step-btn" onclick="switchSection(1)">Tiếp tục ➔</button>
         </div>
 
-        <!-- SECTION 2: Quả cầu ảnh không gian 3D (28 chỗ tròn tròn xoay) -->
+        <!-- SECTION 2: Khối Trái Tim 3D chứa 28 ảnh định dạng .jpg -->
         <div class="section" id="section-2">
             <h1 class="main-title">Khoảnh Khắc Đẹp Của Lớp A10</h1>
             <div class="globe-container">
@@ -422,7 +422,7 @@
         <!-- Nút chuyển Slide ở dưới cùng -->
         <div class="nav-controls">
             <button class="nav-btn active" onclick="switchSection(0)">1. Ô Bí Mật & Lịch</button>
-            <button class="nav-btn" onclick="switchSection(1)">2. Quả Cầu Ảnh</button>
+            <button class="nav-btn" onclick="switchSection(1)">2. Trái Tim Ảnh</button>
             <button class="nav-btn" onclick="switchSection(2)">3. Lời Chúc</button>
         </div>
     </div>
@@ -435,37 +435,15 @@
 
     <script>
         // ==========================================
-        // DANH SÁCH ẢNH: Bạn có thể thay đổi đường dẫn hoặc thêm file ảnh (.jpg, .png...) vào đây
+        // DANH SÁCH ĐƯỜNG DẪN 28 ẢNH (.jpg)
+        // Bạn hãy thay đổi tên file như "anh1.jpg", "anh2.jpg"... cho đúng với thư mục chứa ảnh của bạn
         // ==========================================
         const customImages = [
-            "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400",
-            "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=400",
-            "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400",
-            "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400",
-            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
-            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400",
-            "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400",
-            "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400",
-            "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400",
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
-            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400",
-            "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400",
-            "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400",
-            "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400",
-            "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400",
-            "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=400",
-            "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400",
-            "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400",
-            "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400",
-            "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400",
-            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400",
-            "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400",
-            "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=400",
-            "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400",
-            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400",
-            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
-            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
-            "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400"
+            "anh1.jpg", "anh2.jpg", "anh3.jpg", "anh4.jpg", "anh5.jpg", "anh6.jpg",
+            "anh7.jpg", "anh8.jpg", "anh9.jpg", "anh10.jpg", "anh11.jpg", "anh12.jpg",
+            "anh13.jpg", "anh14.jpg", "anh15.jpg", "anh16.jpg", "anh17.jpg", "anh18.jpg",
+            "anh19.jpg", "anh20.jpg", "anh21.jpg", "anh22.jpg", "anh23.jpg", "anh24.jpg",
+            "anh25.jpg", "anh26.jpg", "anh27.jpg", "anh28.jpg"
         ];
 
         // Tạo hiệu ứng sao lấp lánh nền
@@ -497,7 +475,7 @@
             puzzleGrid.appendChild(piece);
         }
 
-        // Khởi tạo Quả Cầu 3D (Đúng 28 chỗ để ảnh)
+        // Khởi tạo khối Trái Tim 3D chứa 28 điểm ảnh
         const globe3d = document.getElementById('globe-3d');
         const globeCount = 28;
         for (let i = 0; i < globeCount; i++) {
@@ -505,17 +483,21 @@
             item.className = 'globe-item';
             item.innerText = `Ảnh ${i + 1}`;
             
-            const currentImgSrc = customImages[i % customImages.length];
+            const currentImgSrc = customImages[i];
 
-            const phi = Math.acos(-1 + (2 * i) / globeCount);
-            const theta = Math.sqrt(globeCount * Math.PI) * phi;
-            const radius = 150;
+            // Công thức toán học tạo hình trái tim 3D
+            const t = (i / globeCount) * Math.PI * 2;
+            const x = 16 * Math.pow(Math.sin(t), 3);
+            const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+            const z = (i % 7 - 3) * 6; // Tạo độ dày nhiều lớp cho trái tim nổi khối 3D
 
-            const x = radius * Math.cos(theta) * Math.sin(phi);
-            const y = radius * Math.sin(theta) * Math.sin(phi);
-            const z = radius * Math.cos(phi);
+            // Tỉ lệ thu phóng kích thước hiển thị cho vừa khung hình
+            const scaleFactor = 10;
+            const posX = x * scaleFactor;
+            const posY = y * scaleFactor;
+            const posZ = z * scaleFactor;
 
-            item.style.transform = `translate3d(${x}px, ${y}px, ${z}px)`;
+            item.style.transform = `translate3d(${posX}px, ${posY}px, ${posZ}px)`;
 
             item.addEventListener('click', () => {
                 openPhotoModal(currentImgSrc);
