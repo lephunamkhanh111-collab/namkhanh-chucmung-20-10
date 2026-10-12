@@ -87,7 +87,8 @@
             pointer-events: none;
             transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
             transform: scale(0.92);
-            padding: 20px;
+            padding: 15px;
+            overflow-y: auto;
         }
 
         .section.active {
@@ -98,14 +99,14 @@
 
         /* Tiêu đề */
         .main-title {
-            font-size: 2.1rem;
+            font-size: 1.7rem;
             color: #ffb6c1;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-align: center;
             text-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
             font-weight: bold;
             max-width: 950px;
-            padding: 0 15px;
+            padding: 0 10px;
             animation: glowTitle 2.5s infinite alternate;
         }
 
@@ -117,41 +118,41 @@
         /* Content Box Phần 1 */
         .content-box {
             display: flex;
-            gap: 40px;
+            gap: 25px;
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
             background: rgba(30, 15, 55, 0.75);
-            padding: 30px;
-            border-radius: 25px;
+            padding: 20px;
+            border-radius: 20px;
             border: 2px solid rgba(255, 182, 193, 0.4);
             box-shadow: 0 0 40px rgba(255, 105, 180, 0.3);
             max-width: 950px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             backdrop-filter: blur(6px);
         }
 
         /* Lưới 6 ô bí mật (Phần 1) */
         .puzzle-grid {
             display: grid;
-            grid-template-columns: repeat(3, 85px);
-            grid-template-rows: repeat(2, 85px);
-            gap: 14px;
+            grid-template-columns: repeat(3, 75px);
+            grid-template-rows: repeat(2, 75px);
+            gap: 10px;
             cursor: pointer;
         }
 
         .puzzle-piece {
-            width: 85px;
-            height: 85px;
+            width: 75px;
+            height: 75px;
             background: linear-gradient(135deg, #ff4d6d, #ff758c);
-            border-radius: 18px;
+            border-radius: 15px;
             border: 2px solid #ffb6c1;
             box-shadow: 0 4px 18px rgba(255, 105, 180, 0.5);
             transition: transform 0.3s, box-shadow 0.3s;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
 
         .puzzle-piece:hover {
@@ -163,23 +164,23 @@
         /* Lịch Phần 1 */
         .calendar-card {
             background: rgba(45, 20, 75, 0.85);
-            padding: 20px;
-            border-radius: 18px;
+            padding: 15px;
+            border-radius: 15px;
             border: 2px solid #ff69b4;
             text-align: center;
-            width: 280px;
+            width: 260px;
             box-shadow: 0 5px 20px rgba(255, 105, 180, 0.4);
         }
 
-        .calendar-card h3 { color: #ff69b4; margin-bottom: 5px; font-size: 1.4rem; }
-        .calendar-card p { color: #ddd; font-size: 0.85rem; margin-bottom: 15px; }
+        .calendar-card h3 { color: #ff69b4; margin-bottom: 3px; font-size: 1.2rem; }
+        .calendar-card p { color: #ddd; font-size: 0.8rem; margin-bottom: 10px; }
 
         .calendar-table { width: 100%; border-collapse: collapse; }
-        .calendar-table th, .calendar-table td { padding: 6px; text-align: center; font-size: 0.85rem; }
+        .calendar-table th, .calendar-table td { padding: 4px; text-align: center; font-size: 0.8rem; }
         .calendar-table th { color: #ffb6c1; }
         .calendar-table td.highlight {
             background: #ff2a6d; color: white; border-radius: 50%; font-weight: bold;
-            box-shadow: 0 0 15px #ff2a6d; animation: pulseDate 1.2s infinite alternate;
+            box-shadow: 0 0 12px #ff2a6d; animation: pulseDate 1.2s infinite alternate;
         }
 
         @keyframes pulseDate {
@@ -189,28 +190,28 @@
 
         /* SECTION 2: 28 Đóa hoa của lớp A10 */
         .gallery-container {
-            width: 850px;
-            max-width: 95vw;
-            height: 480px;
+            width: 90vw;
+            max-width: 750px;
+            height: 400px;
             background: rgba(25, 12, 45, 0.65);
             border: 2px solid rgba(255, 105, 180, 0.5);
-            border-radius: 25px;
+            border-radius: 20px;
             position: relative;
             overflow: hidden;
             box-shadow: 0 0 35px rgba(255, 105, 180, 0.3);
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             backdrop-filter: blur(5px);
         }
 
         /* Kiểu Trái Tim */
         .heart-item {
             position: absolute;
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             background: linear-gradient(135deg, #ff2a6d, #ff758c);
             transform: rotate(-45deg);
             cursor: pointer;
-            box-shadow: 0 0 18px rgba(255, 105, 180, 0.85);
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.85);
             transition: transform 0.3s, z-index 0.3s, background 0.3s;
             user-select: none;
         }
@@ -218,20 +219,20 @@
         .heart-item::before, .heart-item::after {
             content: "";
             position: absolute;
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: inherit;
         }
 
-        .heart-item::before { top: -24px; left: 0; }
-        .heart-item::after { left: 24px; top: 0; }
+        .heart-item::before { top: -20px; left: 0; }
+        .heart-item::after { left: 20px; top: 0; }
 
         .heart-item:hover {
-            transform: scale(1.6) rotate(-45deg) !important;
+            transform: scale(1.5) rotate(-45deg) !important;
             z-index: 100 !important;
             background: #ff0055;
-            box-shadow: 0 0 30px #ff69b4, 0 0 45px #ff0055;
+            box-shadow: 0 0 25px #ff69b4, 0 0 40px #ff0055;
         }
 
         /* Nút điều hướng */
@@ -239,12 +240,12 @@
             background: linear-gradient(45deg, #ff2a6d, #ff758c);
             color: white;
             border: none;
-            padding: 13px 35px;
-            font-size: 1.05rem;
+            padding: 10px 30px;
+            font-size: 1rem;
             font-weight: bold;
-            border-radius: 30px;
+            border-radius: 25px;
             cursor: pointer;
-            box-shadow: 0 4px 22px rgba(255, 42, 109, 0.6);
+            box-shadow: 0 4px 20px rgba(255, 42, 109, 0.6);
             transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
             z-index: 50;
         }
@@ -252,7 +253,7 @@
         .nav-btn:hover {
             transform: scale(1.08);
             background: linear-gradient(45deg, #ff758c, #ff2a6d);
-            box-shadow: 0 6px 30px rgba(255, 42, 109, 0.8);
+            box-shadow: 0 6px 25px rgba(255, 42, 109, 0.8);
         }
 
         /* Modal Phóng To Ảnh Chung */
@@ -262,45 +263,46 @@
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             z-index: 1000; opacity: 0; pointer-events: none;
             transition: opacity 0.4s ease; backdrop-filter: blur(10px);
+            padding: 20px;
         }
         #photo-modal.show { opacity: 1; pointer-events: auto; }
         #modal-img {
-            max-width: 80%; max-height: 70vh; border-radius: 18px;
+            max-width: 90%; max-height: 65vh; border-radius: 15px;
             border: 3px solid #ff69b4; box-shadow: 0 0 35px rgba(255, 105, 180, 0.95);
-            margin-bottom: 25px; object-fit: contain;
+            margin-bottom: 20px; object-fit: contain;
         }
 
         .back-btn {
             background: linear-gradient(45deg, #ff2a6d, #ff758c);
-            color: white; border: none; padding: 12px 35px;
-            font-size: 1.1rem; font-weight: bold; border-radius: 30px;
+            color: white; border: none; padding: 10px 30px;
+            font-size: 1rem; font-weight: bold; border-radius: 25px;
             cursor: pointer; box-shadow: 0 4px 20px rgba(255, 42, 109, 0.5);
         }
         .back-btn:hover { transform: scale(1.08); background: linear-gradient(45deg, #ff758c, #ff2a6d); }
 
         /* SECTION 3: Bìa Thư & Nội Dung Thư */
         #envelope-container {
-            width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 15px;
         }
 
         /* Giao diện Bìa Thư ban đầu */
         #envelope-box {
-            position: relative; width: 450px; height: 300px;
+            position: relative; width: 90%; max-width: 420px; height: 260px;
             background: linear-gradient(135deg, #fff0f5, #ffccd5);
             border-radius: 15px; border: 3px solid #ff69b4;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.4s ease; padding: 15px; text-align: center;
         }
 
-        #envelope-box h3 { color: #d90429; margin-bottom: 20px; font-size: 1.4rem; text-align: center; }
+        #envelope-box h3 { color: #d90429; margin-bottom: 15px; font-size: 1.2rem; }
 
         .envelope-seal {
-            width: 75px; height: 75px; background: #ff2a6d;
-            border-radius: 50%; border: 4px solid #ffb6c1;
+            width: 65px; height: 65px; background: #ff2a6d;
+            border-radius: 50%; border: 3px solid #ffb6c1;
             box-shadow: 0 0 20px #ff2a6d, 0 4px 10px rgba(0,0,0,0.5);
             display: flex; justify-content: center; align-items: center;
-            font-size: 1.2rem; font-weight: bold; color: white; cursor: pointer;
+            font-size: 1.1rem; font-weight: bold; color: white; cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
         }
         .envelope-seal:hover { transform: scale(1.1); box-shadow: 0 0 35px #ff69b4; }
@@ -308,15 +310,17 @@
         /* Giao diện Bức Thư hiện ra khi bấm mở */
         #letter-box {
             display: none;
-            width: 550px;
-            max-width: 90vw;
+            width: 90%;
+            max-width: 520px;
+            max-height: 70vh;
+            overflow-y: auto;
             background: #fff;
             border-radius: 15px; border: 2px dashed #ff2a6d;
             box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
-            padding: 35px; color: #5c061c;
+            padding: 25px; color: #5c061c;
             text-align: left;
             animation: fadeInLetter 0.5s ease;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
 
         @keyframes fadeInLetter {
@@ -324,11 +328,38 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        #letter-box h2 { color: #d90429; margin-bottom: 15px; font-size: 1.6rem; text-align: center; }
-        #letter-box p { font-size: 1.05rem; line-height: 1.7; margin-bottom: 20px; }
+        #letter-box h2 { color: #d90429; margin-bottom: 12px; font-size: 1.4rem; text-align: center; }
+        #letter-box p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px; }
         .signature { font-style: italic; font-weight: bold; text-align: right; color: #b7094c; }
 
-        #back-to-home { display: none; margin-top: 15px; }
+        #back-to-home { display: none; margin-top: 10px; }
+
+        /* Chữ DEV: Nam Khanh ở góc dưới cùng */
+        .developer-credit {
+            position: fixed;
+            bottom: 8px;
+            right: 12px;
+            font-size: 0.75rem;
+            color: rgba(255, 182, 193, 0.6);
+            z-index: 999;
+            pointer-events: none;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* Tối ưu riêng cho màn hình điện thoại nhỏ */
+        @media screen and (max-width: 480px) {
+            .main-title { font-size: 1.3rem; margin-bottom: 10px; }
+            .puzzle-grid {
+                grid-template-columns: repeat(3, 65px);
+                grid-template-rows: repeat(2, 65px);
+                gap: 8px;
+            }
+            .puzzle-piece { width: 65px; height: 65px; font-size: 1.1rem; }
+            .calendar-card { width: 230px; padding: 10px; }
+            .gallery-container { height: 320px; }
+            .content-box { padding: 12px; gap: 15px; }
+        }
     </style>
 </head>
 <body>
@@ -390,6 +421,9 @@
         </div>
     </div>
 
+    <!-- Chữ DEV: Nam Khanh ở góc dưới cùng -->
+    <div class="developer-credit">DEV: Nam Khanh</div>
+
     <!-- Modal Phóng To Ảnh Chung -->
     <div id="photo-modal">
         <img id="modal-img" src="" alt="Ảnh kỷ niệm A10">
@@ -422,10 +456,10 @@
 
         // Tạo sao lấp lánh nền
         const space = document.getElementById('space');
-        for (let i = 0; i < 140; i++) {
+        for (let i = 0; i < 100; i++) {
             const star = document.createElement('div');
             star.className = 'star';
-            star.style.width = Math.random() * 3.5 + 'px';
+            star.style.width = Math.random() * 3 + 'px';
             star.style.height = star.style.width;
             star.style.top = Math.random() * 100 + '%';
             star.style.left = Math.random() * 100 + '%';
@@ -435,14 +469,14 @@
 
         // Tạo icon Trái tim bay toàn màn hình
         const icons = ['💖', '🌸', '🌷', '✨', '🌹', '💐', '❤️', '💕', '💗'];
-        for (let i = 0; i < 40; i++) {
+        for (let i = 0; i < 25; i++) {
             const el = document.createElement('div');
             el.className = 'floating-icon';
             el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
             el.style.left = Math.random() * 100 + 'vw';
             el.style.animationDuration = (4.5 + Math.random() * 5.5) + 's';
             el.style.animationDelay = (Math.random() * 6) + 's';
-            el.style.fontSize = (14 + Math.random() * 20) + 'px';
+            el.style.fontSize = (12 + Math.random() * 16) + 'px';
             document.body.appendChild(el);
         }
 
@@ -461,42 +495,48 @@
 
         // Khởi tạo 28 TRÁI TIM (Phần 2)
         const gallery = document.getElementById('gallery-container');
-        const galleryWidth = 750;
-        const galleryHeight = 380;
+        
+        function initGallery() {
+            gallery.innerHTML = '';
+            const isMobile = window.innerWidth <= 480;
+            const galleryWidth = isMobile ? window.innerWidth * 0.85 : 700;
+            const galleryHeight = isMobile ? 280 : 340;
 
-        for (let i = 0; i < 28; i++) {
-            const item = document.createElement('div');
-            item.className = 'heart-item';
+            for (let i = 0; i < 28; i++) {
+                const item = document.createElement('div');
+                item.className = 'heart-item';
 
-            const startX = Math.random() * galleryWidth + 20;
-            const startY = Math.random() * galleryHeight + 20;
-            item.style.left = startX + 'px';
-            item.style.top = startY + 'px';
+                const startX = Math.random() * galleryWidth + 10;
+                const startY = Math.random() * galleryHeight + 10;
+                item.style.left = startX + 'px';
+                item.style.top = startY + 'px';
 
-            const animName = `moveHeart_${i}`;
-            const keyframes = `
-                @keyframes ${animName} {
-                    0% { transform: translate(0px, 0px) rotate(-45deg); }
-                    25% { transform: translate(${(Math.random() - 0.5) * 140}px, ${(Math.random() - 0.5) * 120}px) rotate(-45deg); }
-                    50% { transform: translate(${(Math.random() - 0.5) * 140}px, ${(Math.random() - 0.5) * 120}px) rotate(-45deg); }
-                    75% { transform: translate(${(Math.random() - 0.5) * 140}px, ${(Math.random() - 0.5) * 120}px) rotate(-45deg); }
-                    100% { transform: translate(0px, 0px) rotate(-45deg); }
-                }
-            `;
-            const styleSheet = document.createElement('style');
-            styleSheet.innerHTML = keyframes;
-            document.head.appendChild(styleSheet);
+                const animName = `moveHeart_${i}`;
+                const keyframes = `
+                    @keyframes ${animName} {
+                        0% { transform: translate(0px, 0px) rotate(-45deg); }
+                        25% { transform: translate(${(Math.random() - 0.5) * 90}px, ${(Math.random() - 0.5) * 80}px) rotate(-45deg); }
+                        50% { transform: translate(${(Math.random() - 0.5) * 90}px, ${(Math.random() - 0.5) * 80}px) rotate(-45deg); }
+                        75% { transform: translate(${(Math.random() - 0.5) * 90}px, ${(Math.random() - 0.5) * 80}px) rotate(-45deg); }
+                        100% { transform: translate(0px, 0px) rotate(-45deg); }
+                    }
+                `;
+                const styleSheet = document.createElement('style');
+                styleSheet.innerHTML = keyframes;
+                document.head.appendChild(styleSheet);
 
-            const duration = 5 + Math.random() * 6;
-            item.style.animation = `${animName} ${duration}s ease-in-out infinite alternate`;
+                const duration = 5 + Math.random() * 5;
+                item.style.animation = `${animName} ${duration}s ease-in-out infinite alternate`;
 
-            const currentImgSrc = customImages[i];
-            item.addEventListener('click', () => {
-                openPhotoModal(currentImgSrc);
-            });
+                const currentImgSrc = customImages[i];
+                item.addEventListener('click', () => {
+                    openPhotoModal(currentImgSrc);
+                });
 
-            gallery.appendChild(item);
+                gallery.appendChild(item);
+            }
         }
+        initGallery();
 
         // --- HÀM MỞ ẢNH PHÓNG TO CHUNG ---
         function openPhotoModal(imgSrc) {
