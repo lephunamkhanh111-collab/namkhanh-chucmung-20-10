@@ -255,7 +255,7 @@
             box-shadow: 0 6px 30px rgba(255, 42, 109, 0.8);
         }
 
-        /* Modal Phóng To Ảnh Chung (Dùng cho cả Ô bí mật & 28 Trái tim) */
+        /* Modal Phóng To Ảnh Chung */
         #photo-modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(5, 2, 10, 0.93);
@@ -278,72 +278,57 @@
         }
         .back-btn:hover { transform: scale(1.08); background: linear-gradient(45deg, #ff758c, #ff2a6d); }
 
-        /* SECTION 3: Bìa Thư Yêu Thương */
+        /* SECTION 3: Bìa Thư & Nội Dung Thư */
         #envelope-container {
             width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            perspective: 1500px;
         }
 
-        .envelope-wrapper {
-            position: relative; width: 500px; height: 350px;
-            transform-style: preserve-3d;
+        /* Giao diện Bìa Thư ban đầu */
+        #envelope-box {
+            position: relative; width: 450px; height: 300px;
+            background: linear-gradient(135deg, #fff0f5, #ffccd5);
+            border-radius: 15px; border: 3px solid #ff69b4;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 0.4s ease;
         }
 
-        /* Nút tròn "Mở" ở giữa */
+        #envelope-box h3 { color: #d90429; margin-bottom: 20px; font-size: 1.4rem; text-align: center; }
+
         .envelope-seal {
-            position: absolute; top: 50%; left: 50%;
             width: 75px; height: 75px; background: #ff2a6d;
             border-radius: 50%; border: 4px solid #ffb6c1;
-            transform: translate(-50%, -50%); z-index: 20;
             box-shadow: 0 0 20px #ff2a6d, 0 4px 10px rgba(0,0,0,0.5);
             display: flex; justify-content: center; align-items: center;
             font-size: 1.2rem; font-weight: bold; color: white; cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        .envelope-seal:hover { transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 0 35px #ff69b4; }
+        .envelope-seal:hover { transform: scale(1.1); box-shadow: 0 0 35px #ff69b4; }
 
-        .envelope-front {
-            position: absolute; width: 100%; height: 100%;
-            background: linear-gradient(135deg, #fff0f5, #ffccd5);
-            border-radius: 15px; border: 3px solid #ff69b4;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            z-index: 10; pointer-events: none;
-        }
-
-        .envelope-flap {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: #ffb6c1; border-radius: 15px;
-            transform-origin: top; transform: rotateX(0deg);
-            z-index: 5; transition: transform 0.6s 0.2s, z-index 0.6s;
-        }
-
-        .envelope-back {
-            position: absolute; width: 100%; height: 100%;
-            background: #ffccd5; border-radius: 15px; z-index: 1;
-        }
-
-        .letter-card {
-            position: absolute; bottom: 0; left: 5%;
-            width: 90%; height: 90%;
+        /* Giao diện Bức Thư hiện ra khi bấm mở */
+        #letter-box {
+            display: none;
+            width: 550px;
+            max-width: 90vw;
             background: #fff;
-            border-radius: 10px; border: 2px dashed #ff2a6d;
-            box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
-            padding: 30px; color: #5c061c;
-            transform: translateY(100%);
-            transition: transform 0.8s 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s 0.6s;
-            opacity: 0; z-index: 2;
+            border-radius: 15px; border: 2px dashed #ff2a6d;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
+            padding: 35px; color: #5c061c;
+            text-align: left;
+            animation: fadeInLetter 0.5s ease;
+            margin-bottom: 25px;
         }
 
-        .letter-card h2 { color: #d90429; margin-bottom: 12px; font-size: 1.6rem; text-align: center; }
-        .letter-card p { font-size: 1.02rem; line-height: 1.6; margin-bottom: 15px; text-align: left; }
+        @keyframes fadeInLetter {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #letter-box h2 { color: #d90429; margin-bottom: 15px; font-size: 1.6rem; text-align: center; }
+        #letter-box p { font-size: 1.05rem; line-height: 1.7; margin-bottom: 20px; }
         .signature { font-style: italic; font-weight: bold; text-align: right; color: #b7094c; }
 
-        .envelope-wrapper.opened .envelope-flap { transform: rotateX(-180deg); z-index: 0; }
-        .envelope-wrapper.opened .envelope-seal { transform: translate(-50%, -50%) scale(0); opacity: 0; pointer-events: none; }
-        .envelope-wrapper.opened .letter-card { transform: translateY(-40px); opacity: 1; z-index: 8; }
-
-        #back-to-home { display: none; margin-top: 25px; }
-        .envelope-wrapper.opened + #back-to-home { display: block; }
+        #back-to-home { display: none; margin-top: 15px; }
     </style>
 </head>
 <body>
@@ -380,31 +365,32 @@
             <button class="nav-btn" onclick="switchSection(2)">Tiếp theo nèk ➔</button>
         </div>
 
-        <!-- SECTION 3: Bìa Thư và Nút Tròn Chữ "Mở" -->
+        <!-- SECTION 3: Bìa Thư chuyển thẳng thành Bức Thư Lời Chúc -->
         <div class="section" id="section-3">
             <div id="envelope-container">
-                <div class="envelope-wrapper" id="envelope-wrapper">
-                    <div class="envelope-front"></div>
-                    <div class="envelope-seal" onclick="openEnvelope()">Mở</div>
-                    <div class="envelope-flap"></div>
-                    <div class="envelope-back"></div>
-
-                    <div class="letter-card">
-                        <h2>Gửi các bạn nữ A10 thân mến!</h2>
-                        <p>
-                            Hôm nay là ngày 20/10 – ngày đặc biệt dành riêng cho một nửa tuyệt vời nhất của lớp A10 chúng mình. 
-                            Tập thể con trai A10 xin gửi những lời chúc tốt đẹp nhất: Chúc các bạn luôn xinh đẹp, vui tươi, học giỏi và luôn rạng rỡ như những bông hoa tươi thắm nhất! 
-                            Cảm ơn vì đã luôn đồng hành, mang đến bao tiếng cười và niềm vui cho lớp chúng ta.
-                        </p>
-                        <div class="signature">Thân ái,<br>Tập thể con trai A10 ❤️</div>
-                    </div>
+                <!-- Bìa thư ban đầu -->
+                <div id="envelope-box">
+                    <h3>💌 Bạn có một bức thư bí mật từ Nam A10! 💌</h3>
+                    <div class="envelope-seal" onclick="openLetter()">Mở</div>
                 </div>
+
+                <!-- Bức thư hiện ra khi bấm mở -->
+                <div id="letter-box">
+                    <h2>Gửi các bạn nữ A10 thân mến!</h2>
+                    <p>
+                        Hôm nay là ngày 20/10 – ngày đặc biệt dành riêng cho một nửa tuyệt vời nhất của lớp A10 chúng mình. 
+                        Tập thể con trai A10 xin gửi những lời chúc tốt đẹp nhất: Chúc các bạn luôn xinh đẹp, vui tươi, học giỏi và luôn rạng rỡ như những bông hoa tươi thắm nhất! 
+                        Cảm ơn vì đã luôn đồng hành, mang đến bao tiếng cười và niềm vui cho lớp chúng ta.
+                    </p>
+                    <div class="signature">Thân ái,<br>Tập thể con trai A10 ❤️</div>
+                </div>
+
                 <button class="nav-btn" id="back-to-home" onclick="resetApp()">🔄 Về trang chủ</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal Phóng To Ảnh Chung (Cho cả 6 ô bí mật & 28 trái tim) -->
+    <!-- Modal Phóng To Ảnh Chung -->
     <div id="photo-modal">
         <img id="modal-img" src="" alt="Ảnh kỷ niệm A10">
         <button class="back-btn" onclick="closePhotoModal()">Quay Lại ↩</button>
@@ -415,7 +401,7 @@
         // 1. ĐƯỜNG DẪN 6 ẢNH CHO 6 Ô BÍ MẬT (.jpg)
         // =========================================================================
         const puzzleImages = [
-            "bimat1.jpg", 
+            "bin.jpg", 
             "bimat2.jpg", 
             "bimat3.jpg", 
             "bimat4.jpg", 
@@ -525,10 +511,11 @@
             modal.classList.remove('show');
         }
 
-        // --- XỬ LÝ MỞ THƯ (PHẦN 3) ---
-        function openEnvelope() {
-            const envelope = document.getElementById('envelope-wrapper');
-            envelope.classList.add('opened');
+        // --- HÀM MỞ THƯ TRỰC TIẾP KHÔNG HIỆU ỨNG ---
+        function openLetter() {
+            document.getElementById('envelope-box').style.display = 'none';
+            document.getElementById('letter-box').style.display = 'block';
+            document.getElementById('back-to-home').style.display = 'block';
         }
 
         // --- XỬ LÝ NAVIGATE & RESET ---
@@ -544,8 +531,9 @@
 
         function resetApp() {
             switchSection(0);
-            const envelope = document.getElementById('envelope-wrapper');
-            envelope.classList.remove('opened');
+            document.getElementById('envelope-box').style.display = 'flex';
+            document.getElementById('letter-box').style.display = 'none';
+            document.getElementById('back-to-home').style.display = 'none';
         }
     </script>
 </body>
