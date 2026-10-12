@@ -373,9 +373,9 @@
             <button class="nav-btn" onclick="switchSection(1)">Tiếp theo nèk ➔</button>
         </div>
 
-        <!-- SECTION 2: 28 Trái tim chứa ảnh .jpg -->
+        <!-- SECTION 2: 28 Đóa hoa rạng rỡ của lớp A10 -->
         <div class="section" id="section-2">
-            <h1 class="main-title">💖 28 Trái Tim Yêu Thương Của Lớp A10 💖</h1>
+            <h1 class="main-title">🌸 28 Đóa Hoa Rạng Rỡ & Đáng Yêu Nhất Lớp A10 🌸</h1>
             <div class="gallery-container" id="gallery-container"></div>
             <button class="nav-btn" onclick="switchSection(2)">Tiếp theo nèk ➔</button>
         </div>
@@ -412,7 +412,7 @@
 
     <script>
         // =========================================================================
-        // 1. ĐƯỜNG DẪN 6 ẢNH CHO 6 Ô BÍ MẬT (.jpg) - BẠN HÃY THAY TÊN FILE TẠI ĐÂY
+        // 1. ĐƯỜNG DẪN 6 ẢNH CHO 6 Ô BÍ MẬT (.jpg)
         // =========================================================================
         const puzzleImages = [
             "bimat1.jpg", 
@@ -424,7 +424,7 @@
         ];
 
         // =========================================================================
-        // 2. ĐƯỜNG DẪN 28 ẢNH CHO 28 TRÁI TIM (.jpg) - BẠN HÃY THAY TÊN FILE TẠI ĐÂY
+        // 2. ĐƯỜNG DẪN 28 ẢNH CHO 28 TRÁI TIM (.jpg)
         // =========================================================================
         const customImages = [
             "anh1.jpg", "anh2.jpg", "anh3.jpg", "anh4.jpg", "anh5.jpg", "anh6.jpg",
@@ -473,7 +473,7 @@
             puzzleGrid.appendChild(piece);
         }
 
-        // Khởi tạo 28 TRÁI TIM (Phần 2) - Bấm vào sẽ hiện ảnh .jpg ngẫu nhiên tương ứng trong mảng customImages
+        // Khởi tạo 28 TRÁI TIM (Phần 2)
         const gallery = document.getElementById('gallery-container');
         const galleryWidth = 750;
         const galleryHeight = 380;
@@ -504,7 +504,6 @@
             const duration = 5 + Math.random() * 6;
             item.style.animation = `${animName} ${duration}s ease-in-out infinite alternate`;
 
-            // Lấy đúng file ảnh .jpg tương ứng trong mảng customImages cho từng trái tim
             const currentImgSrc = customImages[i];
             item.addEventListener('click', () => {
                 openPhotoModal(currentImgSrc);
