@@ -74,7 +74,7 @@
             pointer-events: auto;
         }
 
-        /* Section 1: Trái tim puzzle & Lịch */
+        /* Tiêu đề */
         .main-title {
             font-size: 2.2rem;
             color: #ffb6c1;
@@ -98,28 +98,29 @@
             border: 1px solid rgba(255, 182, 193, 0.3);
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
             max-width: 950px;
+            margin-bottom: 20px;
         }
 
-        /* Lưới ô chữ bí mật thay cho mảnh ghép */
+        /* Lưới 6 ô chữ bí mật (2 hàng x 3 cột) */
         .puzzle-heart {
             display: grid;
-            grid-template-columns: repeat(4, 75px);
-            grid-template-rows: repeat(4, 75px);
-            gap: 5px;
+            grid-template-columns: repeat(3, 85px);
+            grid-template-rows: repeat(2, 85px);
+            gap: 10px;
             cursor: pointer;
         }
 
         .puzzle-piece {
-            width: 75px;
-            height: 75px;
+            width: 85px;
+            height: 85px;
             display: flex;
             justify-content: center;
             align-items: center;
             background: linear-gradient(135deg, #ff758c, #ff7eb3);
-            border-radius: 8px;
+            border-radius: 12px;
             border: 2px solid #ffb6c1;
             font-weight: bold;
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #fff;
             text-shadow: 0 1px 2px rgba(0,0,0,0.3);
             transition: transform 0.3s, box-shadow 0.3s;
@@ -139,18 +140,18 @@
             border-radius: 15px;
             border: 1px solid #ff69b4;
             text-align: center;
-            width: 300px;
+            width: 280px;
         }
 
         .calendar-card h3 {
             color: #ff69b4;
             margin-bottom: 5px;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
         }
 
         .calendar-card p {
             color: #ddd;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             margin-bottom: 15px;
         }
 
@@ -160,9 +161,9 @@
         }
 
         .calendar-table th, .calendar-table td {
-            padding: 8px;
+            padding: 6px;
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .calendar-table th {
@@ -177,12 +178,13 @@
             box-shadow: 0 0 10px #ff69b4;
         }
 
-        /* Section 2: Quả cầu ảnh 3D (28 chỗ) */
+        /* Section 2: Quả cầu ảnh 3D tròn tròn xoay (28 chỗ) */
         .globe-container {
             width: 400px;
             height: 400px;
             position: relative;
             perspective: 1000px;
+            margin-bottom: 20px;
         }
 
         .globe {
@@ -200,19 +202,19 @@
 
         .globe-item {
             position: absolute;
-            width: 65px;
-            height: 65px;
+            width: 60px;
+            height: 60px;
             left: 170px;
             top: 170px;
-            border-radius: 6px;
+            border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             background: linear-gradient(135deg, #ff4d6d, #ff758c);
-            border: 1px solid #ffb6c1;
-            box-shadow: 0 0 8px rgba(255,105,180,0.5);
+            border: 2px solid #ffb6c1;
+            box-shadow: 0 0 10px rgba(255,105,180,0.6);
             cursor: pointer;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: bold;
             color: #fff;
             text-align: center;
@@ -221,8 +223,9 @@
         }
 
         .globe-item:hover {
-            transform: scale(1.5) !important;
+            transform: scale(1.6) !important;
             z-index: 100;
+            background: #ff69b4;
         }
 
         /* Section 3: Bức thư chúc mừng */
@@ -237,6 +240,7 @@
             text-align: center;
             border: 2px dashed #ff4d6d;
             animation: popUp 0.8s ease-out;
+            margin-bottom: 20px;
         }
 
         @keyframes popUp {
@@ -261,6 +265,26 @@
             font-weight: bold;
             text-align: right;
             color: #b7094c;
+        }
+
+        /* Nút Tiếp tục chuyển slide */
+        .next-step-btn {
+            background: linear-gradient(45deg, #ff4d6d, #ff758c);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+            transition: transform 0.2s, background 0.2s;
+            z-index: 50;
+        }
+
+        .next-step-btn:hover {
+            transform: scale(1.08);
+            background: linear-gradient(45deg, #ff758c, #ff4d6d);
         }
 
         /* Fullscreen Photo Modal xem ảnh kèm nút Quay lại */
@@ -314,10 +338,10 @@
             background: linear-gradient(45deg, #ff758c, #ff4d6d);
         }
 
-        /* Nút chuyển đổi slide dưới cùng */
+        /* Nút chọn slide dưới cùng */
         .nav-controls {
             position: absolute;
-            bottom: 20px;
+            bottom: 15px;
             display: flex;
             gap: 15px;
             z-index: 50;
@@ -327,9 +351,10 @@
             background: rgba(255, 105, 180, 0.2);
             border: 1px solid #ff69b4;
             color: white;
-            padding: 8px 20px;
+            padding: 6px 15px;
             border-radius: 20px;
             cursor: pointer;
+            font-size: 0.85rem;
             transition: 0.3s;
         }
 
@@ -344,11 +369,11 @@
     <div id="space"></div>
 
     <div class="container">
-        <!-- SECTION 1: Ô chữ bí mật & Lịch -->
+        <!-- SECTION 1: 6 Ô bí mật & Lịch -->
         <div class="section active" id="section-1">
             <h1 class="main-title">Tập thể Nam lớp A10 thân gửi các bạn nữ nhân ngày 20/10</h1>
             <div class="content-box">
-                <!-- Lưới ô chữ bí mật (16 ô) -->
+                <!-- 6 ô chữ bí mật -->
                 <div class="puzzle-heart" id="puzzle-grid"></div>
 
                 <!-- Lịch Tháng 10/2026 -->
@@ -367,14 +392,18 @@
                     </table>
                 </div>
             </div>
+            <!-- Nút Tiếp tục sang Quả Cầu Ảnh -->
+            <button class="next-step-btn" onclick="switchSection(1)">Tiếp tục ➔</button>
         </div>
 
-        <!-- SECTION 2: Quả cầu ảnh không gian 3D (28 chỗ) -->
+        <!-- SECTION 2: Quả cầu ảnh không gian 3D (28 chỗ tròn tròn xoay) -->
         <div class="section" id="section-2">
             <h1 class="main-title">Khoảnh Khắc Đẹp Của Lớp A10</h1>
             <div class="globe-container">
                 <div class="globe" id="globe-3d"></div>
             </div>
+            <!-- Nút Tiếp tục sang Lời Chúc -->
+            <button class="next-step-btn" onclick="switchSection(2)">Tiếp tục ➔</button>
         </div>
 
         <!-- SECTION 3: Bức thư chúc mừng -->
@@ -390,10 +419,10 @@
             </div>
         </div>
 
-        <!-- Nút chuyển Slide -->
+        <!-- Nút chuyển Slide ở dưới cùng -->
         <div class="nav-controls">
             <button class="nav-btn active" onclick="switchSection(0)">1. Ô Bí Mật & Lịch</button>
-            <button class="nav-btn" onclick="switchSection(1)">2. Quả Cầu Ảnh (28 ô)</button>
+            <button class="nav-btn" onclick="switchSection(1)">2. Quả Cầu Ảnh</button>
             <button class="nav-btn" onclick="switchSection(2)">3. Lời Chúc</button>
         </div>
     </div>
@@ -406,7 +435,7 @@
 
     <script>
         // ==========================================
-        // DANH SÁCH ẢNH: Bạn có thể thay thế đường dẫn hoặc tên file (ví dụ: "anh1.jpg", "anh2.jpg"...) vào đây
+        // DANH SÁCH ẢNH: Bạn có thể thay đổi đường dẫn hoặc thêm file ảnh (.jpg, .png...) vào đây
         // ==========================================
         const customImages = [
             "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400",
@@ -452,9 +481,9 @@
             space.appendChild(star);
         }
 
-        // Khởi tạo Lưới ô chữ bí mật (16 ô)
+        // Khởi tạo Lưới 6 ô chữ bí mật
         const puzzleGrid = document.getElementById('puzzle-grid');
-        for (let i = 0; i < 16; i++) {
+        for (let i = 0; i < 6; i++) {
             const piece = document.createElement('div');
             piece.className = 'puzzle-piece';
             piece.innerText = `Bí Mật ${i + 1}`;
