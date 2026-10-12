@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            overflow-x: hidden;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 40px;
+        }
+
+        /* Hiệu ứng pháo hoa nền phớt */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: twinkle 2s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+
+        /* Khung nội dung chính */
+        .container {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 90%;
+        }
+
+        /* Tiêu đề Happy New Year lấp lánh */
+        .title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 0 0 10px #ff4500, 0 0 20px #ff8c00, 0 0 30px #ffd700;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            align-items: center;
+            animation: glowTitle 2s infinite alternate;
+        }
+
+        @keyframes glowTitle {
+            from { text-shadow: 0 0 10px #ff4500, 0 0 20px #ff8c00; }
+            to { text-shadow: 0 0 20px #ffd700, 0 0 35px #ff1493, 0 0 50px #00ffff; }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #00ffff;
+            margin-top: 5px;
+            text-shadow: 0 0 10px #00ffff;
+            letter-spacing: 3px;
+        }
+
+        /* KHUNG NHÉT ẢNH NHỎ XINH Ở DƯỚI */
+        .photo-frame {
+            margin: 25px 0;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(45deg, #ff3366, #ffcc00, #00ffff);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+            animation: pulseFrame 2s infinite alternate;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
+
+        @keyframes pulseFrame {
+            from { transform: scale(1); box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
+            to { transform: scale(1.06); box-shadow: 0 0 30px rgba(0, 255, 255, 0.8); }
+        }
+
+        /* Biểu tượng trang trí */
+        .decor-icons {
+            display: flex;
+            gap: 20px;
+            font-size: 2rem;
+            margin: 10px 0;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Nút bấm lời chúc */
+        .btn-wish {
+            margin-top: 15px;
+            padding: 10px 22px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(45deg, #ff007f, #7f00ff);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
+            transition: 0.3s ease;
+        }
+
+        .btn-wish:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+        }
+
+        /* Hộp hiển thị lời chúc ẩn */
+        .wish-box {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: #ff99ff;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 12px 20px;
+            border-radius: 12px;
+            border: 1px dashed #00ffff;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+            display: none;
+            animation: fadeIn 0.5s forwards;
+            max-width: 80%;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nền sao lấp lánh -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Nội dung chính -->
+    <div class="container">
+        <div class="title">
+            <span>✨ HAPPY NEW YEAR ✨</span>
+            <span class="subtitle">2027</span>
+        </div>
+
+        <!-- KHUNG NHÉT ẢNH NHỎ -->
+        <div class="photo-frame">
+            <!-- Chỉ cần đặt file ảnh trùng tên "ten-anh.jpg" ở cùng chỗ với file index.html -->
+            <img src="ten-anh.jpg" alt="Ảnh của bạn">
+        </div>
+
+        <div class="decor-icons">
+            <span>🎆</span>
+            <span>🌸</span>
+            <span>🧧</span>
+        </div>
+
+        <button class="btn-wish" onclick="showWish()">💌 Lời chúc năm mới</button>
+
+        <div id="wishText" class="wish-box">
+            🌸 Chúc năm mới ngập tràn niềm vui, vạn sự như ý, an khang thịnh vượng! 🌸
+        </div>
+    </div>
+
+    <script>
+        // Tạo các hạt sao ngẫu nhiên
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            const size = Math.random() * 3 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.animationDuration = `${Math.random() * 3 + 1}s`;
+            star.style.animationDelay = `${Math.random() * 2}s`;
+            starsContainer.appendChild(star);
+        }
+
+        // Hiện lời chúc khi bấm nút
+        function showWish() {
+            document.getElementById('wishText').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
