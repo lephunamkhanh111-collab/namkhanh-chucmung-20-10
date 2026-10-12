@@ -136,7 +136,7 @@
             margin-bottom: 20px;
         }
 
-        /* Lưới 6 ô chữ bí mật (Đã bỏ chữ) */
+        /* Lưới 6 ô chữ bí mật */
         .puzzle-heart {
             display: grid;
             grid-template-columns: repeat(3, 85px);
@@ -211,7 +211,7 @@
             box-shadow: 0 0 12px #ff69b4;
         }
 
-        /* SECTION 2: 28 Bông hoa / Ảnh xếp ngẫu nhiên 2D */
+        /* SECTION 2: 28 Trái Tim di chuyển ngẫu nhiên liên tục */
         .random-gallery {
             width: 850px;
             max-width: 95vw;
@@ -225,35 +225,57 @@
             margin-bottom: 25px;
         }
 
-        .gallery-item {
+        /* Tạo kiểu Hình Trái Tim bằng CSS */
+        .heart-item {
             position: absolute;
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #ff4d6d, #ff758c);
-            border: 3px solid #ffb6c1;
-            box-shadow: 0 0 15px rgba(255,105,180,0.7);
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ff2a6d, #ff758c);
+            transform: rotate(-45deg);
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.8);
+            transition: transform 0.3s, z-index 0.3s, background 0.3s;
+            user-select: none;
             display: flex;
             justify-content: center;
             align-items: center;
-            cursor: pointer;
-            font-size: 0.7rem;
+        }
+
+        .heart-item::before,
+        .heart-item::after {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: inherit;
+        }
+
+        .heart-item::before {
+            top: -25px;
+            left: 0;
+        }
+
+        .heart-item::after {
+            left: 25px;
+            top: 0;
+        }
+
+        .heart-text {
+            position: relative;
+            z-index: 5;
+            transform: rotate(45deg); /* Bật lại chữ cho thẳng */
+            font-size: 0.75rem;
             font-weight: bold;
             color: #fff;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
             text-align: center;
-            transition: transform 0.3s, z-index 0.3s;
-            user-select: none;
-            animation: floatFlower 4s ease-in-out infinite alternate;
+            white-space: nowrap;
         }
 
-        @keyframes floatFlower {
-            0% { transform: translateY(0px) rotate(0deg); }
-            100% { transform: translateY(-8px) rotate(5deg); }
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.5) rotate(0deg) !important;
-            z-index: 100;
+        .heart-item:hover {
+            transform: scale(1.5) rotate(-45deg) !important;
+            z-index: 100 !important;
             background: #ff1493;
             box-shadow: 0 0 25px #ff69b4;
         }
@@ -412,9 +434,9 @@
             <button class="next-step-btn" onclick="switchSection(1)">Tiếp tục khám phá ➔</button>
         </div>
 
-        <!-- SECTION 2: 28 Bông hoa / Ảnh xếp ngẫu nhiên 2D -->
+        <!-- SECTION 2: 28 Trái Tim di chuyển ngẫu nhiên liên tục -->
         <div class="section" id="section-2">
-            <h1 class="main-title">💐 28 Đóa Hoa Rạng Rỡ & Đáng Yêu Nhất Lớp A10 💐</h1>
+            <h1 class="main-title">💖 28 Trái Tim Yêu Thương Của Lớp A10 💖</h1>
             <div class="random-gallery" id="random-gallery"></div>
             <!-- Nút Tiếp tục chuyển sang phần 3 -->
             <button class="next-step-btn" onclick="switchSection(2)">Gửi Lời Chúc ➔</button>
@@ -448,7 +470,7 @@
             "bimat4.jpg", "bimat5.jpg", "bimat6.jpg"
         ];
 
-        // Mảng 28 ảnh cho 28 đóa hoa ở phần 2
+        // Mảng 28 ảnh cho 28 trái tim ở phần 2
         const customImages = [
             "anh1.jpg", "anh2.jpg", "anh3.jpg", "anh4.jpg", "anh5.jpg", "anh6.jpg",
             "anh7.jpg", "anh8.jpg", "anh9.jpg", "anh10.jpg", "anh11.jpg", "anh12.jpg",
@@ -495,25 +517,45 @@
             puzzleGrid.appendChild(piece);
         }
 
-        // Khởi tạo 28 đóa hoa ảnh xếp ngẫu nhiên (random 2D) trong khung
+        // Khởi tạo 28 TRÁI TIM di chuyển xung quanh liên tục ngẫu nhiên
         const gallery = document.getElementById('random-gallery');
-        const galleryWidth = 830;
-        const galleryHeight = 460;
+        const galleryWidth = 750;
+        const galleryHeight = 380;
 
         for (let i = 0; i < 28; i++) {
             const item = document.createElement('div');
-            item.className = 'gallery-item';
-            item.innerHTML = `🌸 ${i + 1}`;
+            item.className = 'heart-item';
+            
+            // Nhãn hiển thị số thứ tự
+            const text = document.createElement('span');
+            text.className = 'heart-text';
+            text.innerText = `${i + 1}`;
+            item.appendChild(text);
 
-            // Random vị trí không bị tràn viền
-            const randomX = Math.random() * (galleryWidth - 80);
-            const randomY = Math.random() * (galleryHeight - 80);
-            const randomRotate = (Math.random() - 0.5) * 30; // Xoay góc ngẫu nhiên từ -15 đến 15 độ
+            // Vị trí xuất phát ngẫu nhiên
+            const startX = Math.random() * galleryWidth + 20;
+            const startY = Math.random() * galleryHeight + 20;
+            item.style.left = startX + 'px';
+            item.style.top = startY + 'px';
 
-            item.style.left = randomX + 'px';
-            item.style.top = randomY + 'px';
-            item.style.transform = `rotate(${randomRotate}deg)`;
-            item.style.animationDelay = (Math.random() * 3) + 's';
+            // Tạo hiệu ứng di chuyển ngẫu nhiên độc bản cho mỗi trái tim
+            const animName = `moveHeart_${i}`;
+            const keyframes = `
+                @keyframes ${animName} {
+                    0% { transform: translate(0px, 0px) rotate(-45deg); }
+                    25% { transform: translate(${(Math.random() - 0.5) * 120}px, ${(Math.random() - 0.5) * 100}px) rotate(-45deg); }
+                    50% { transform: translate(${(Math.random() - 0.5) * 120}px, ${(Math.random() - 0.5) * 100}px) rotate(-45deg); }
+                    75% { transform: translate(${(Math.random() - 0.5) * 120}px, ${(Math.random() - 0.5) * 100}px) rotate(-45deg); }
+                    100% { transform: translate(0px, 0px) rotate(-45deg); }
+                }
+            `;
+            const styleSheet = document.createElement('style');
+            styleSheet.innerHTML = keyframes;
+            document.head.appendChild(styleSheet);
+
+            // Gán hiệu ứng hoạt họa chuyển động liên tục
+            const duration = 6 + Math.random() * 6; // Thời gian từ 6 - 12 giây
+            item.style.animation = `${animName} ${duration}s ease-in-out infinite alternate`;
 
             const currentImgSrc = customImages[i];
             item.addEventListener('click', () => {
