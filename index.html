@@ -20,6 +20,32 @@
             overflow: hidden;
         }
 
+        /* Nút Bật/Tắt Nhạc ở góc trên */
+        #music-control {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 9999;
+            background: rgba(255, 105, 180, 0.3);
+            border: 2px solid #ff69b4;
+            color: white;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+            transition: transform 0.3s;
+        }
+
+        #music-control:hover {
+            transform: scale(1.1);
+        }
+
         /* Nền sao & hiệu ứng nền */
         #space {
             position: fixed;
@@ -347,7 +373,6 @@
             font-weight: 500;
         }
 
-        /* Tối ưu riêng cho màn hình điện thoại nhỏ */
         @media screen and (max-width: 480px) {
             .main-title { font-size: 1.3rem; margin-bottom: 10px; }
             .puzzle-grid {
@@ -363,6 +388,12 @@
     </style>
 </head>
 <body>
+
+    <!-- THẺ ÂM THANH (Thay 'nhacnen.mp3' bằng file nhạc của bạn) -->
+    <audio id="bg-music" src="nhacnen.mp3" loop></audio>
+
+    <!-- NÚT BẬT/TẮT NHẠC Ở GÓC TRÊN -->
+    <div id="music-control" onclick="toggleMusic()">🎵</div>
 
     <div id="space"></div>
 
@@ -421,7 +452,6 @@
         </div>
     </div>
 
-    <!-- Chữ DEV: Nam Khanh ở góc dưới cùng -->
     <div class="developer-credit">DEV: Nam Khanh</div>
 
     <!-- Modal Phóng To Ảnh Chung -->
@@ -431,6 +461,42 @@
     </div>
 
     <script>
+        // =========================================================================
+        // XỬ LÝ PHÁT NHẠC NỀN
+        // =========================================================================
+        const audio = document.getElementById('bg-music');
+        const musicBtn = document.getElementById('music-control');
+        let isMusicPlaying = false;
+
+        function playMusic() {
+            audio.play().then(() => {
+                isMusicPlaying = true;
+                musicBtn.innerText = '🎵';
+                musicBtn.style.animation = 'spin 3s linear infinite';
+            }).catch(e => {
+                console.log("Cần tương tác để phát nhạc");
+            });
+        }
+
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                audio.pause();
+                isMusicPlaying = false;
+                musicBtn.innerText = '🔇';
+                musicBtn.style.animation = 'none';
+            } else {
+                playMusic();
+            }
+        }
+
+        // Tự động phát nhạc ở lần chạm/click đầu tiên trên trang
+        document.addEventListener('click', function autoPlayOnce() {
+            if (!isMusicPlaying) {
+                playMusic();
+            }
+            document.removeEventListener('click', autoPlayOnce);
+        }, { once: true });
+
         // =========================================================================
         // 1. ĐƯỜNG DẪN 6 ẢNH CHO 6 Ô BÍ MẬT (.jpg)
         // =========================================================================
@@ -551,7 +617,7 @@
             modal.classList.remove('show');
         }
 
-        // --- HÀM MỞ THƯ TRỰC TIẾP KHÔNG HIỆU ỨNG ---
+        // --- HÀM MỞ THƯ TRỰC TIẾP ---
         function openLetter() {
             document.getElementById('envelope-box').style.display = 'none';
             document.getElementById('letter-box').style.display = 'block';
