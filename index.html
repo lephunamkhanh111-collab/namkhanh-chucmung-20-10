@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chúc Mừng 20/10 - Lớp A10</title>
+    <title>Tập thể Nam lớp A10 - Chúc mừng 20/10</title>
     <style>
         * {
             box-sizing: border-box;
@@ -17,10 +17,10 @@
             height: 100%;
             background-color: #0b051a;
             color: #fff;
-            overflow: hidden;
+            overflow: hidden; /* Ngăn scroll mặc định để dùng hiệu ứng switchSection */
         }
 
-        /* Nền dải ngân hà hồng */
+        /* Nền sao & hiệu ứng nền */
         #space {
             position: fixed;
             top: 0;
@@ -44,7 +44,7 @@
             50% { opacity: 1; transform: scale(1.4); }
         }
 
-        /* Hiệu ứng Trái tim, Bóng bay bay ngẫu nhiên toàn màn hình */
+        /* Hiệu ứng Trái tim/Hoa bay toàn màn hình */
         .floating-icon {
             position: fixed;
             color: #ff69b4;
@@ -56,29 +56,14 @@
             filter: drop-shadow(0 0 8px rgba(255, 105, 180, 0.9));
         }
 
-        .balloon {
-            position: fixed;
-            width: 30px;
-            height: 38px;
-            background: radial-gradient(circle at 30% 30%, #ff9ebb, #ff2a6d);
-            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-            pointer-events: none;
-            z-index: -1;
-            animation: floatBalloon 9s ease-in-out infinite;
-            box-shadow: inset -3px -3px 10px rgba(0,0,0,0.3), 0 0 15px rgba(255, 105, 180, 0.6);
-        }
-
         @keyframes floatUp {
             0% { transform: translateY(105vh) scale(0.4) rotate(0deg); opacity: 0; }
+            15% { opacity: 0.9; }
+            85% { opacity: 0.9; }
             100% { transform: translateY(-10vh) scale(1.4) rotate(360deg); opacity: 0; }
         }
 
-        @keyframes floatBalloon {
-            0% { transform: translateY(110vh) translateX(0) rotate(-5deg); opacity: 0; }
-            100% { transform: translateY(-15vh) translateX(30px) rotate(10deg); opacity: 0; }
-        }
-
-        /* Container chính */
+        /* Container chính chứa các slide */
         .container {
             width: 100%;
             height: 100%;
@@ -89,7 +74,7 @@
             position: relative;
         }
 
-        /* Slide / Section */
+        /* Định dạng slide (Section) */
         .section {
             position: absolute;
             width: 100%;
@@ -119,180 +104,161 @@
             text-align: center;
             text-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
             font-weight: bold;
+            max-width: 950px;
+            padding: 0 15px;
             animation: glowTitle 2.5s infinite alternate;
         }
 
         @keyframes glowTitle {
-            0% { text-shadow: 0 0 12px rgba(255, 105, 180, 0.6); }
-            100% { text-shadow: 0 0 30px rgba(255, 105, 180, 1); }
+            0% { text-shadow: 0 0 12px rgba(255, 105, 180, 0.6); transform: scale(1); }
+            100% { text-shadow: 0 0 30px rgba(255, 105, 180, 1), 0 0 45px rgba(255, 20, 147, 0.8); transform: scale(1.02); }
         }
 
-        /* Phần Khám phá đóa hoa A10 */
+        /* Content Box Phần 1 */
         .content-box {
             display: flex;
-            flex-direction: column;
+            gap: 40px;
             align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
             background: rgba(30, 15, 55, 0.75);
             padding: 30px;
             border-radius: 25px;
             border: 2px solid rgba(255, 182, 193, 0.4);
             box-shadow: 0 0 40px rgba(255, 105, 180, 0.3);
             max-width: 950px;
-            width: 100%;
+            margin-bottom: 20px;
+            backdrop-filter: blur(6px);
         }
 
-        .flower-gallery {
+        /* Lưới 6 ô bí mật (Phần 1) */
+        .puzzle-grid {
             display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 15px;
-            margin-bottom: 25px;
+            grid-template-columns: repeat(3, 85px);
+            grid-template-rows: repeat(2, 85px);
+            gap: 14px;
+            cursor: pointer;
         }
 
-        /* Hình Trái Tim hồng neon */
-        .heart-flower {
-            width: 50px;
-            height: 50px;
-            background: #ff2a6d;
-            transform: rotate(-45deg);
+        .puzzle-piece {
+            width: 85px;
+            height: 85px;
+            background: linear-gradient(135deg, #ff4d6d, #ff758c);
+            border-radius: 18px;
+            border: 2px solid #ffb6c1;
+            box-shadow: 0 4px 18px rgba(255, 105, 180, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem; /* Icon '💖' */
+        }
+
+        .puzzle-piece:hover {
+            transform: scale(1.12) rotate(4deg);
+            box-shadow: 0 0 25px #ff69b4;
+            z-index: 10;
+        }
+
+        /* Lịch Phần 1 */
+        .calendar-card {
+            background: rgba(45, 20, 75, 0.85);
+            padding: 20px;
+            border-radius: 18px;
+            border: 2px solid #ff69b4;
+            text-align: center;
+            width: 280px;
+            box-shadow: 0 5px 20px rgba(255, 105, 180, 0.4);
+        }
+
+        .calendar-card h3 { color: #ff69b4; margin-bottom: 5px; font-size: 1.4rem; }
+        .calendar-card p { color: #ddd; font-size: 0.85rem; margin-bottom: 15px; }
+
+        .calendar-table { width: 100%; border-collapse: collapse; }
+        .calendar-table th, .calendar-table td { padding: 6px; text-align: center; font-size: 0.85rem; }
+        .calendar-table th { color: #ffb6c1; }
+        .calendar-table td.highlight {
+            background: #ff2a6d; color: white; border-radius: 50%; font-weight: bold;
+            box-shadow: 0 0 15px #ff2a6d; animation: pulseDate 1.2s infinite alternate;
+        }
+
+        @keyframes pulseDate {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+
+        /* SECTION 2: 28 Bông hoa của lớp A10 */
+        .gallery-container {
+            width: 850px;
+            max-width: 95vw;
+            height: 480px;
+            background: rgba(25, 12, 45, 0.65);
+            border: 2px solid rgba(255, 105, 180, 0.5);
+            border-radius: 25px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(255, 105, 180, 0.3);
+            margin-bottom: 25px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Kiểu Trái Tim (đại diện bông hoa) */
+        .heart-item {
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #ff2a6d, #ff758c);
+            transform: rotate(-45deg); /* Góc trái tim CSS chuẩn */
             cursor: pointer;
             box-shadow: 0 0 18px rgba(255, 105, 180, 0.85);
-            transition: transform 0.3s;
-            position: relative;
+            transition: transform 0.3s, z-index 0.3s, background 0.3s;
+            user-select: none;
         }
 
-        .heart-flower::before,
-        .heart-flower::after {
+        /* Tạo hai hình tròn trên cùng của trái tim */
+        .heart-item::before, .heart-item::after {
             content: "";
             position: absolute;
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             background: inherit;
         }
 
-        .heart-flower::before { top: -25px; left: 0; }
-        .heart-flower::after { left: 25px; top: 0; }
+        .heart-item::before { top: -24px; left: 0; }
+        .heart-item::after { left: 24px; top: 0; }
 
-        .heart-flower:hover {
-            transform: scale(1.2) rotate(-45deg);
+        /* Chữ số trên trái tim đã được xóa bỏ theo yêu cầu, chỉ còn hình */
+
+        .heart-item:hover {
+            transform: scale(1.6) rotate(-45deg) !important;
+            z-index: 100 !important;
             background: #ff0055;
+            box-shadow: 0 0 30px #ff69b4, 0 0 45px #ff0055;
         }
 
-        /* Phần Bìa thư và Thư chúc mừng */
-        .envelope-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-        }
-
-        /* Bìa thư */
-        .envelope {
-            width: 400px;
-            height: 250px;
-            background: linear-gradient(135deg, #fff0f5, #ffccd5);
-            border-radius: 15px;
-            border: 3px solid #ff2a6d;
-            box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.5s;
-        }
-
-        .envelope.opened {
-            transform: translateY(-20px) scale(1.05);
-        }
-
-        /* Nút tròn mở thư ở giữa */
-        .open-seal {
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle, #ff2a6d, #b7094c);
-            border: 4px solid #fff;
-            border-radius: 50%;
-            box-shadow: 0 0 20px #ff2a6d;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.2rem;
-            color: white;
-            z-index: 10;
-            transition: transform 0.3s;
-        }
-
-        .open-seal:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 30px #ff2a6d;
-        }
-
-        /* Thư chúc mừng giấu bên trong */
-        .letter {
-            width: 360px;
-            background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            border: 2px dashed #ff4d6d;
-            color: #5c061c;
-            text-align: left;
-            position: absolute;
-            top: 250px; /* Ban đầu giấu dưới bìa thư */
-            left: 20px;
-            z-index: 5;
-            transition: top 0.7s ease-out; /* Hiệu ứng chui từ bao lên */
-        }
-
-        /* Khi thư đã mở */
-        .envelope.opened .letter {
-            top: -150px; /* Thư chui lên khỏi bìa */
-        }
-
-        .letter h2 {
-            margin-bottom: 15px;
-            color: #d90429;
-            font-size: 1.5rem;
-            text-align: center;
-        }
-
-        .letter p {
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            color: #4a0410;
-        }
-
-        .signature {
-            font-style: italic;
-            font-weight: bold;
-            text-align: right;
-            color: #b7094c;
-        }
-
-        /* Nút chuyển slide */
-        .next-btn {
+        /* Nút 'Tiếp tục nèk' và 'Về trang chủ' */
+        .nav-btn {
             background: linear-gradient(45deg, #ff2a6d, #ff758c);
             color: white;
             border: none;
             padding: 13px 35px;
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: bold;
             border-radius: 30px;
             cursor: pointer;
             box-shadow: 0 4px 22px rgba(255, 42, 109, 0.6);
-            margin-top: 20px;
+            transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
             z-index: 50;
         }
 
-        .next-btn:hover {
-            transform: scale(1.05);
+        .nav-btn:hover {
+            transform: scale(1.08);
+            background: linear-gradient(45deg, #ff758c, #ff2a6d);
             box-shadow: 0 6px 30px rgba(255, 42, 109, 0.8);
         }
 
-        /* Fullscreen Photo Modal xem ảnh */
+        /* Fullscreen Photo Modal xem ảnh bí mật */
         #photo-modal {
             position: fixed;
             top: 0;
@@ -307,38 +273,157 @@
             z-index: 1000;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.4s ease, backdrop-filter 0.4s ease;
+            backdrop-filter: blur(0px);
         }
 
         #photo-modal.show {
             opacity: 1;
             pointer-events: auto;
+            backdrop-filter: blur(10px);
         }
 
         #modal-img {
             max-width: 80%;
             max-height: 70vh;
-            border-radius: 15px;
+            border-radius: 18px;
             border: 3px solid #ff69b4;
+            box-shadow: 0 0 35px rgba(255, 105, 180, 0.95);
             margin-bottom: 25px;
             object-fit: contain;
             transform: scale(0.65);
-            transition: transform 0.4s ease-out;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        #photo-modal.show #modal-img {
-            transform: scale(1);
-        }
+        #photo-modal.show #modal-img { transform: scale(1); }
 
-        .close-btn {
+        .back-btn {
             background: linear-gradient(45deg, #ff2a6d, #ff758c);
             color: white;
             border: none;
             padding: 12px 35px;
             font-size: 1.1rem;
+            font-weight: bold;
             border-radius: 30px;
             cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255, 42, 109, 0.5);
+            transition: transform 0.2s, background 0.2s;
         }
+
+        .back-btn:hover { transform: scale(1.08); background: linear-gradient(45deg, #ff758c, #ff2a6d); }
+
+        /* Hiệu ứng 'Hiện ảnh lớp đại diện' Modal riêng (Phần 2) */
+        #gallery-photo-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(20, 5, 30, 0.95);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1010; opacity: 0; pointer-events: none;
+            transition: opacity 0.4s ease, transform 0.4s ease-in-out;
+            transform: scale(0);
+        }
+
+        #gallery-photo-modal.show { opacity: 1; pointer-events: auto; transform: scale(1); }
+
+        .gallery-photo-content {
+            position: relative;
+            max-width: 85%; max-height: 80vh;
+            border-radius: 20px; border: 4px solid #ff1493;
+            box-shadow: 0 0 40px #ff69b4; overflow: hidden;
+        }
+
+        .gallery-photo-content img { width: 100%; height: 100%; object-fit: contain; }
+
+        .gallery-photo-close {
+            position: absolute; top: 15px; right: 20px;
+            font-size: 2.5rem; color: #ffb6c1; cursor: pointer;
+            transition: 0.2s; z-index: 1011;
+        }
+        .gallery-photo-close:hover { color: #fff; transform: scale(1.1); text-shadow: 0 0 10px #ff69b4; }
+
+        /* SECTION 3: Bìa Thư Yêu Thương */
+        #envelope-container {
+            width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;
+            perspective: 1500px; /* Hiệu ứng 3D mở thư */
+        }
+
+        .envelope-wrapper {
+            position: relative; width: 500px; height: 350px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+
+        /* Nút tròn mở thư ở giữa */
+        .envelope-seal {
+            position: absolute; top: 50%; left: 50%;
+            width: 70px; height: 70px; background: #ff2a6d;
+            border-radius: 50%; border: 4px solid #ffb6c1;
+            transform: translate(-50%, -50%); z-index: 20;
+            box-shadow: 0 0 20px #ff2a6d, 0 4px 10px rgba(0,0,0,0.5);
+            display: flex; justify-content: center; align-items: center;
+            font-size: 1.8rem; color: white;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .envelope-wrapper:hover .envelope-seal { transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 0 30px #ff69b4; }
+
+        /* Mặt trước bao thư */
+        .envelope-front {
+            position: absolute; width: 100%; height: 100%;
+            background: linear-gradient(135deg, #fff0f5, #ffccd5);
+            border-radius: 15px; border: 3px solid #ff69b4;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 10;
+        }
+        .envelope-front h2 { color: #5c061c; margin-bottom: 10px; font-size: 1.6rem; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+        .envelope-front p { color: #8a1d35; font-size: 1rem; }
+
+        /* Nắp thư (khi mở) */
+        .envelope-flap {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #ffb6c1; border-radius: 15px;
+            transform-origin: top;
+            transform: rotateX(0deg);
+            z-index: 5;
+            transition: transform 0.6s 0.2s, z-index 0.6s; /* delay nắp thư sau nắp lưng */
+        }
+
+        /* Mặt sau thư (nơi lá thư chui lên) */
+        .envelope-back {
+            position: absolute; width: 100%; height: 100%;
+            background: #ffccd5; border-radius: 15px;
+            z-index: 1;
+        }
+
+        /* LÁ THƯ (Bên trong bao thư) */
+        .letter-card {
+            position: absolute; bottom: 0; left: 5%;
+            width: 90%; height: 90%;
+            background: #fff;
+            border-radius: 10px; border: 2px dashed #ff2a6d;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
+            padding: 30px;
+            color: #5c061c;
+            transform: translateY(100%); /* Bắt đầu ẩn bên dưới */
+            transition: transform 0.8s 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s 0.6s; /* delay chui lên */
+            opacity: 0;
+            z-index: 2; /* Ban đầu nằm dưới nắp nắp thư (z-index 5), khi mở nắp flap xoay sẽ đổi z-index */
+            /*background-image: url('bg_thu.jpg'); background-size: cover; background-position: center;*/
+        }
+
+        .letter-card h2 { color: #d90429; margin-bottom: 15px; font-size: 1.7rem; text-align: center; }
+        .letter-card p { font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px; text-align: left; }
+        .signature { font-style: italic; font-weight: bold; text-align: right; color: #b7094c; }
+
+        /* KHI BẤM NÚT MỞ THƯ -> THÊM CLASS .opened */
+        .envelope-wrapper.opened .envelope-flap { transform: rotateX(-180deg); z-index: 0; }
+        .envelope-wrapper.opened .envelope-seal { transform: translate(-50%, -50%) scale(0); opacity: 0; pointer-events: none; }
+        .envelope-wrapper.opened .letter-card { transform: translateY(-50px); opacity: 1; z-index: 8; }
+
+        /* Nút quay lại trang chủ ở cuối Section 3 */
+        #back-to-home { display: none; margin-top: 30px; }
+        .envelope-wrapper.opened + #back-to-home { display: block; }
     </style>
 </head>
 <body>
@@ -346,56 +431,92 @@
     <div id="space"></div>
 
     <div class="container">
-        <!-- PHẦN 1: Khám phá Đóa hoa A10 -->
+        <!-- SECTION 1: 6 Ô bí mật & Lịch -->
         <div class="section active" id="section-1">
-            <h1 class="main-title">🌸 28 Đóa Hoa Của Lớp A10 🌸</h1>
+            <h1 class="main-title">🌸 Tập thể Nam lớp A10 thân gửi các bạn nữ nhân ngày 20/10 🌸</h1>
             <div class="content-box">
-                <!-- Lưới 28 trái tim hồng -->
-                <div class="flower-gallery" id="flower-gallery"></div>
+                <!-- 6 ô chữ bí mật -->
+                <div class="puzzle-grid" id="puzzle-grid"></div>
+
+                <!-- Lịch Tháng 10/2026 -->
+                <div class="calendar-card">
+                    <h3>October 2026</h3>
+                    <p>Ngày Phụ Nữ Việt Nam</p>
+                    <table class="calendar-table">
+                        <tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr>
+                        <tr><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+                        <tr><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td></tr>
+                        <tr><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td></tr>
+                        <tr><td>19</td><td class="highlight">20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td></tr>
+                        <tr><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td></td></tr>
+                    </table>
+                </div>
             </div>
             <!-- Nút Tiếp tục chuyển sang phần 2 -->
-            <button class="next-btn" onclick="switchSection(1)">Tiếp theo nèk ➔</button>
+            <button class="nav-btn" onclick="switchSection(1)">Tiếp theo nèk ➔</button>
         </div>
 
-        <!-- PHẦN 2: Bìa thư & Thư chúc mừng -->
+        <!-- SECTION 2: 28 Đóa hoa của lớp A10 (Trái tim hồng neon) -->
         <div class="section" id="section-2">
-            <div class="envelope-container">
-                <!-- Bìa thư -->
-                <div class="envelope" id="envelope">
-                    <!-- Nút tròn mở thư ở giữa -->
-                    <div class="open-seal" onclick="openLetter()">Mở</div>
-                    
-                    <!-- Thư chúc mừng giấu bên trong -->
-                    <div class="letter">
-                        <h2>💌 Gửi các bạn nữ A10! 💌</h2>
+            <h1 class="main-title">💖 28 Đóa Hoa Yêu Thương Lớp A10 💖</h1>
+            <div class="gallery-container" id="gallery-container"></div>
+            <!-- Nút Tiếp tục chuyển sang phần 3 -->
+            <button class="nav-btn" onclick="switchSection(2)">Gửi Thư Yêu Thương ➔</button>
+        </div>
+
+        <!-- SECTION 3: Bìa Thư Yêu Thương và hiệu ứng mở -->
+        <div class="section" id="section-3">
+            <div id="envelope-container">
+                <div class="envelope-wrapper" id="envelope-wrapper" onclick="openEnvelope()">
+                    <!-- Mặt trước bao thư -->
+                    <div class="envelope-front">
+                        <h2>💌 A10 Yêu Thương 💌</h2>
+                        <p>Nhấn nút tròn để nhận quà nha!</p>
+                        <!-- Nút tròn mở thư ở giữa -->
+                        <div class="envelope-seal">🎀</div>
+                    </div>
+                    <!-- Nắp thư -->
+                    <div class="envelope-flap"></div>
+                    <!-- Mặt sau thư -->
+                    <div class="envelope-back"></div>
+
+                    <!-- LÁ THƯ BÊN TRONG (Chui lên khi mở) -->
+                    <div class="letter-card">
+                        <h2>Gửi các bạn nữ A10 thân mến!</h2>
                         <p>
-                            Gửi các bạn nữ A10 thân yêu...<br>
-                            Năm này chúng tớ đã đặc biệt chuẩn bị một món quà nhỏ cho các bạn...<br>
-                            Chúc các bạn luôn xinh đẹp, rạng rỡ và hạnh phúc.<br>
-                            Chúc mừng 20/10!
+                            Hôm nay là ngày 20/10 – ngày đặc biệt dành riêng cho một nửa tuyệt vời nhất của lớp A10 chúng mình. 
+                            Tập thể con trai A10 xin gửi những lời chúc tốt đẹp nhất: Chúc các bạn luôn xinh đẹp, vui tươi, học giỏi và luôn rạng rỡ như những bông hoa tươi thắm nhất! 
+                            Cảm ơn vì đã luôn đồng hành, mang đến bao tiếng cười và niềm vui cho lớp chúng ta.
                         </p>
                         <div class="signature">Thân ái,<br>Tập thể Nam lớp A10 ❤️</div>
                     </div>
                 </div>
+                <!-- Nút Về trang chủ (xuất hiện sau khi mở thư) -->
+                <button class="nav-btn" id="back-to-home" onclick="resetApp()">🔄 Về trang chủ</button>
             </div>
-            <!-- Nút Quay lại phần 1 -->
-            <button class="next-btn" onclick="switchSection(0)" style="margin-top: 200px;">🔄 Quay lại</button>
         </div>
     </div>
 
-    <!-- Modal Phóng To Ảnh & Nút Quay Lại -->
+    <!-- Modal Phóng To Ảnh Bí Mật (Phần 1) -->
     <div id="photo-modal">
-        <img id="modal-img" src="" alt="Ảnh ngẫu nhiên A10">
-        <button class="close-btn" onclick="closePhotoModal()">Quay Lại ↩</button>
+        <img id="modal-img" src="" alt="Ảnh bí mật">
+        <button class="back-btn" onclick="closePhotoModal()">Quay Lại ↩</button>
+    </div>
+
+    <!-- Modal Hiện Ảnh Lớp Đại Diện (Phần 2 - Khi nhấn trái tim) -->
+    <div id="gallery-photo-modal" onclick="closeGalleryPhoto()">
+        <div class="gallery-photo-content" onclick="event.stopPropagation()"> <!-- stop propagation để không bị đóng khi bấm ảnh -->
+            <span class="gallery-photo-close" onclick="closeGalleryPhoto()">×</span>
+            <img src="A10_photo.jpg" alt="Tập thể lớp A10"> <!-- THAY ĐỔI ĐƯỜNG DẪN ẢNH LỚP TẠI ĐÂY -->
+        </div>
     </div>
 
     <script>
-        // Mảng 28 ảnh ngẫu nhiên (.jpg) cho 28 trái tim (Cần thay bằng ảnh thực tế)
-        const flowerImages = [
-            "anh1.jpg", "anh2.jpg", "anh3.jpg", "anh4.jpg", "anh5.jpg", "anh6.jpg", "anh7.jpg",
-            "anh8.jpg", "anh9.jpg", "anh10.jpg", "anh11.jpg", "anh12.jpg", "anh13.jpg", "anh14.jpg",
-            "anh15.jpg", "anh16.jpg", "anh17.jpg", "anh18.jpg", "anh19.jpg", "anh20.jpg", "anh21.jpg",
-            "anh22.jpg", "anh23.jpg", "anh24.jpg", "anh25.jpg", "anh26.jpg", "anh27.jpg", "anh28.jpg"
+        // Mảng 6 ảnh cho 6 ô bí mật ở phần 1
+        // ĐẢM BẢO CÁC FILE NÀY CÓ SẴN CÙNG THƯ MỤC
+        const puzzleImages = [
+            "bimat1.jpg", "bimat2.jpg", "bimat3.jpg", 
+            "bimat4.jpg", "bimat5.jpg", "bimat6.jpg"
         ];
 
         // Tạo sao lấp lánh nền
@@ -411,8 +532,8 @@
             space.appendChild(star);
         }
 
-        // Tạo icon Trái tim & Hoa bay phong phú toàn màn hình
-        const icons = ['🌸', '💖', '🌷', '✨', '🌹', '💐', '❤️'];
+        // Tạo icon Trái tim bay phong phú toàn màn hình
+        const icons = ['💖', '🌸', '🌷', '✨', '🌹', '💐', '❤️', '💕', '💗'];
         for (let i = 0; i < 40; i++) {
             const el = document.createElement('div');
             el.className = 'floating-icon';
@@ -424,49 +545,64 @@
             document.body.appendChild(el);
         }
 
-        // Tạo Bong bóng hồng lơ lửng
-        for (let i = 0; i < 15; i++) {
-            const balloon = document.createElement('div');
-            balloon.className = 'balloon';
-            balloon.style.left = Math.random() * 95 + 'vw';
-            balloon.style.animationDuration = (7 + Math.random() * 6) + 's';
-            balloon.style.animationDelay = (Math.random() * 6) + 's';
-            document.body.appendChild(balloon);
+        // Khởi tạo Lưới 6 ô bí mật (Phần 1)
+        const puzzleGrid = document.getElementById('puzzle-grid');
+        for (let i = 0; i < 6; i++) {
+            const piece = document.createElement('div');
+            piece.className = 'puzzle-piece';
+            piece.innerHTML = "💖";
+            const currentImgSrc = puzzleImages[i];
+            piece.addEventListener('click', () => {
+                openPhotoModal(currentImgSrc);
+            });
+            puzzleGrid.appendChild(piece);
         }
 
-        // Khởi tạo Lưới 28 Đóa hoa (Trái tim hồng)
-        const gallery = document.getElementById('flower-gallery');
+        // Khởi tạo 28 TRÁI TIM YÊU THƯƠNG Y HỆT NHAU (Phần 2)
+        // Số được xóa bỏ, màu hồng neon chuẩn hình CSS
+        const gallery = document.getElementById('gallery-container');
+        const galleryWidth = 750;
+        const galleryHeight = 380;
+
         for (let i = 0; i < 28; i++) {
-            const heart = document.createElement('div');
-            heart.className = 'heart-flower';
+            const item = document.createElement('div');
+            item.className = 'heart-item';
             
-            // Lấy ngẫu nhiên một ảnh từ mảng khi nhấn vào
-            heart.addEventListener('click', () => {
-                const randomImgSrc = flowerImages[Math.floor(Math.random() * flowerImages.length)];
-                openPhotoModal(randomImgSrc);
+            // Xóa chữ số theo yêu cầu, chỉ để hình CSS chuẩn
+
+            // Vị trí xuất phát ngẫu nhiên
+            const startX = Math.random() * galleryWidth + 20;
+            const startY = Math.random() * galleryHeight + 20;
+            item.style.left = startX + 'px';
+            item.style.top = startY + 'px';
+
+            // Tạo hiệu ứng di chuyển lơ lửng liên tục cho mỗi trái tim
+            const animName = `moveHeart_${i}`;
+            const keyframes = `
+                @keyframes ${animName} {
+                    0% { transform: translate(0px, 0px) rotate(-45deg); }
+                    25% { transform: translate(${(Math.random() - 0.5) * 140}px, ${(Math.random() - 0.5) * 120}px) rotate(-45deg); }
+                    50% { transform: translate(${(Math.random() - 0.5) * 140}px, ${(Math.random() - 0.5) * 120}px) rotate(-45deg); }
+                    75% { transform: translate(${(Math.random() - 0.5) * 140}px, ${(Math.random() - 0.5) * 120}px) rotate(-45deg); }
+                    100% { transform: translate(0px, 0px) rotate(-45deg); }
+                }
+            `;
+            const styleSheet = document.createElement('style');
+            styleSheet.innerHTML = keyframes;
+            document.head.appendChild(styleSheet);
+
+            const duration = 5 + Math.random() * 6; // 5-11 giây
+            item.style.animation = `${animName} ${duration}s ease-in-out infinite alternate`;
+
+            // Khi nhấn TRÁI TIM -> Hiện ảnh đại diện (phóng to Modal)
+            item.addEventListener('click', () => {
+                openGalleryPhoto();
             });
-            gallery.appendChild(heart);
+
+            gallery.appendChild(item);
         }
 
-        // Chuyển slide
-        function switchSection(index) {
-            const sections = document.querySelectorAll('.section');
-            sections.forEach((sec, idx) => {
-                sec.classList.remove('active');
-                if (idx === index) sec.classList.add('active');
-            });
-            // Reset trạng thái thư nếu quay lại
-            if (index === 0) {
-                document.getElementById('envelope').classList.remove('opened');
-            }
-        }
-
-        // Hiệu ứng Mở thư
-        function openLetter() {
-            document.getElementById('envelope').classList.add('opened');
-        }
-
-        // Mở modal ảnh
+        // --- HÀM XỬ LÝ ẢNH BÍ MẬT (PHẦN 1) ---
         function openPhotoModal(imgSrc) {
             const modal = document.getElementById('photo-modal');
             const modalImg = document.getElementById('modal-img');
@@ -474,9 +610,45 @@
             modal.classList.add('show');
         }
 
-        // Đóng modal ảnh
         function closePhotoModal() {
-            document.getElementById('photo-modal').classList.remove('show');
+            const modal = document.getElementById('photo-modal');
+            modal.classList.remove('show');
+        }
+
+        // --- HÀM XỬ LÝ ẢNH ĐẠI DIỆN LỚP (PHẦN 2) ---
+        function openGalleryPhoto() {
+            const modal = document.getElementById('gallery-photo-modal');
+            modal.classList.add('show');
+        }
+
+        function closeGalleryPhoto() {
+            const modal = document.getElementById('gallery-photo-modal');
+            modal.classList.remove('show');
+        }
+
+        // --- XỬ LÝ MỞ THƯ YÊU THƯƠNG (PHẦN 3) ---
+        function openEnvelope() {
+            const envelope = document.getElementById('envelope-wrapper');
+            envelope.classList.add('opened');
+        }
+
+        // --- XỬ LÝ NAVIGATE & RESET ---
+        function switchSection(index) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((sec, idx) => {
+                sec.classList.remove('active');
+                if (idx === index) {
+                    sec.classList.add('active');
+                }
+            });
+        }
+
+        function resetApp() {
+            // Quay về trang chủ
+            switchSection(0);
+            // Reset bao thư về trạng thái đóng
+            const envelope = document.getElementById('envelope-wrapper');
+            envelope.classList.remove('opened');
         }
     </script>
 </body>
