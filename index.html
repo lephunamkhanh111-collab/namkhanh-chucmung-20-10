@@ -101,12 +101,12 @@
             margin-bottom: 20px;
         }
 
-        /* Lưới 6 ô chữ bí mật (2 hàng x 3 cột) */
+        /* Lưới đúng 6 ô chữ bí mật (2 hàng x 3 cột) */
         .puzzle-heart {
             display: grid;
             grid-template-columns: repeat(3, 85px);
             grid-template-rows: repeat(2, 85px);
-            gap: 10px;
+            gap: 12px;
             cursor: pointer;
         }
 
@@ -120,11 +120,13 @@
             border-radius: 12px;
             border: 2px solid #ffb6c1;
             font-weight: bold;
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #fff;
             text-shadow: 0 1px 2px rgba(0,0,0,0.3);
             transition: transform 0.3s, box-shadow 0.3s;
             user-select: none;
+            text-align: center;
+            padding: 5px;
         }
 
         .puzzle-piece:hover {
@@ -287,7 +289,7 @@
             background: linear-gradient(45deg, #ff758c, #ff4d6d);
         }
 
-        /* Fullscreen Photo Modal xem ảnh kèm nút Quay lại */
+        /* Fullscreen Photo Modal */
         #photo-modal {
             position: fixed;
             top: 0;
@@ -434,10 +436,7 @@
     </div>
 
     <script>
-        // ==========================================
-        // DANH SÁCH ĐƯỜNG DẪN 28 ẢNH (.jpg)
-        // Bạn hãy thay đổi tên file như "anh1.jpg", "anh2.jpg"... cho đúng với thư mục chứa ảnh của bạn
-        // ==========================================
+        // Danh sách đường dẫn 28 ảnh (.jpg)
         const customImages = [
             "anh1.jpg", "anh2.jpg", "anh3.jpg", "anh4.jpg", "anh5.jpg", "anh6.jpg",
             "anh7.jpg", "anh8.jpg", "anh9.jpg", "anh10.jpg", "anh11.jpg", "anh12.jpg",
@@ -459,7 +458,7 @@
             space.appendChild(star);
         }
 
-        // Khởi tạo Lưới 6 ô chữ bí mật
+        // Khởi tạo Lưới đúng 6 ô chữ bí mật
         const puzzleGrid = document.getElementById('puzzle-grid');
         for (let i = 0; i < 6; i++) {
             const piece = document.createElement('div');
@@ -489,9 +488,8 @@
             const t = (i / globeCount) * Math.PI * 2;
             const x = 16 * Math.pow(Math.sin(t), 3);
             const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
-            const z = (i % 7 - 3) * 6; // Tạo độ dày nhiều lớp cho trái tim nổi khối 3D
+            const z = (i % 7 - 3) * 6;
 
-            // Tỉ lệ thu phóng kích thước hiển thị cho vừa khung hình
             const scaleFactor = 10;
             const posX = x * scaleFactor;
             const posY = y * scaleFactor;
